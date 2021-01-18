@@ -83,7 +83,7 @@ void context_state_callback(pa_context *c, void *data)
     case PA_CONTEXT_READY:
         pa_context_get_server_info(c, server_info_callback, data);
         pa_context_set_subscribe_callback(c, subscribe_callback, data);
-        pa_context_subscribe(c, PA_SUBSCRIPTION_MASK_SINK | PA_SUBSCRIPTION_MASK_SINK_INPUT, NULL, NULL);
+        pa_context_subscribe(c, PA_SUBSCRIPTION_MASK_SINK | PA_SUBSCRIPTION_MASK_SINK_INPUT | PA_SUBSCRIPTION_MASK_SERVER, NULL, NULL);
         break;
     case PA_CONTEXT_FAILED:
         die("Connection failure: %s", pa_strerror(pa_context_errno(c)));
